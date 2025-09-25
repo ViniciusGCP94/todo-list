@@ -7,7 +7,7 @@
     <title>Todo List Application</title>
 </head>
 <body class="bg-indigo-900 min-h-screen">
-    <header class="flex flex-col items-center justify-between gap-y-6 mb-6 p-5 border-1 border-b-blue-200">
+    <header class="flex flex-col items-center justify-between gap-y-6 mb-2 p-5 border-1 border-b-blue-200">
         <div class="flex justify-between w-full">
             <svg class="w-10 h-10 border-1 rounded-lg text-gray-50 bg-indigo-950" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -21,14 +21,24 @@
             <button class="flex justify-center w-10 h-10 rounded-full bg-sky-800 text-gray-50 border-2 border-gray-50">+</button>
         </div>
     </header>
-    <main class="p-5">
-        <div class="bg-gray-800 text-gray-200 rounded-lg shadow-xl w-full max-w-sm mx-auto p-6 border-1 border-white">
-            <div class="task-item">
-                <input type="checkbox" class="task-checkbox">
-                <span class="task-text">Example task</span>
-                <button class="delete-btn">Delete</button>
+    <main class="flex flex-col gap-y-5 py-2 ">
+        <div class="container__to-do text-gray-200 w-full max-w-sm mx-auto pt-2 pb-5 px-5 border-b-1 border-b-blue-200">
+            <h2 class="text-gray-50 text-xl mb-4 tracking-wider">TAREFAS</h2>    
+            <div class="task-item flex justify-between items-center text-xl p-4 shadow-xl bg-indigo-600 rounded-lg">
+                <input type="checkbox" class="task-checkbox w-7 h-7 rounded-full appearance-none border-2 border-gray-50 bg-gray-50 checked:bg-green-200 checked:border-green-200">
+                <span class="task-text w-50 ml-2">Tarefa á Fazer</span>
+                <button class="delete-btn border-1 border-gray-50 px-2 py-1 rounded-md">Excluir</button>
             </div>
         </div>
+        <div class="container_completed-to-do text-gray-200 w-full max-w-sm mx-auto pt-2 pb-5 px-5">
+            <h2 class="text-gray-50 text-xl mb-4 tracking-wider">COMPLETAS</h2>  
+            <div class="task-item flex justify-between items-center text-xl p-4 shadow-xl/30 bg-indigo-600 rounded-lg">
+                <input type="checkbox" class="task-checkbox w-7 h-7 rounded-full appearance-none border-2 border-gray-50 bg-gray-50 checked:bg-green-200 checked:border-green-200 relative" checked>
+                <span class="task-text w-50 ml-2">Tarefa Completa</span>
+                <button class="delete-btn border-1 border-gray-50 px-2 py-1 rounded-md">Excluir</button>
+            </div>
+        </div>
+
     </main>
     
     <footer>
