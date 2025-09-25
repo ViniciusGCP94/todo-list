@@ -6,14 +6,19 @@
     <link href="./assets/css/output.css" rel="stylesheet">
     <title>Todo List Application</title>
 </head>
-<body class="bg-indigo-950 min-h-screen">
-    <header class="flex items-center justify-between mb-6 p-5">
-        <svg class="w-10 h-10 border-1 rounded-lg text-gray-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>                                                                          
-
-        <div class="flex items-center space-x-2">
-            <span class="text-gray-300 text-sm font-medium">VINNIE</span>
+<body class="bg-indigo-900 min-h-screen">
+    <header class="flex flex-col items-center justify-between gap-y-6 mb-6 p-5 border-1 border-b-blue-200">
+        <div class="flex justify-between w-full">
+            <svg class="w-10 h-10 border-1 rounded-lg text-gray-50 bg-indigo-950" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>                                                                          
+            <div class="flex items-center space-x-2">
+                <span class="text-gray-300 text-2xl font-medium">VINNIE</span>
+            </div>
+        </div>
+        <div class="flex w-full justify-between items-center text-2xl py-1 px-1 bg-indigo-950 border-2 border-gray-50 rounded-full">
+            <input type="text" class="pl-2 text-gray-50" placeholder="Adicionar Item">
+            <button class="flex justify-center w-10 h-10 rounded-full bg-sky-800 text-gray-50 border-2 border-gray-50">+</button>
         </div>
     </header>
     <main class="p-5">
