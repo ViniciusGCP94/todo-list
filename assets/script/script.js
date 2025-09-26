@@ -40,6 +40,7 @@ function createTaskElement(text, completed) {
         <span class="task-text flex-1 px-4">${text}</span>
         <button class="delete-btn border-1 border-gray-50 px-2 py-1 rounded-md">Excluir</button>
     `;
+     
     return taskDiv;
 }
 
@@ -60,18 +61,19 @@ function renderTasks() {
     });
 }
 
-function addTaskEvents(taskElement) {
-    const checkbox = taskElement.querySelector('.task-checkbox');
-    const deleteBtn = taskElement.querySelector('.delete-btn');
-    
-    checkbox.addEventListener('change', function() {
-        moveTask(taskElement, this.checked);
-    });
-    
-    deleteBtn.addEventListener('click', function() {
+document.addEventListener('change', function(e) {
+    if (e.target.classList.contains('task-checkbox')) {
+        const taskElement = e.target.closest('.task-item');
+        moveTask(taskElement, e.target.checked);
+    }
+});
+
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('delete-btn')) {
+        const taskElement = e.target.closest('.task-item');
         taskElement.remove();
-    });
-}
+    }
+});
 
 function moveTask(taskElement, isCompleted) {
     const todoContainer = document.querySelector('[data-section="tarefas"]');
@@ -83,4 +85,3 @@ function moveTask(taskElement, isCompleted) {
         todoContainer.appendChild(taskElement);
     }
 }
-

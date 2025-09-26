@@ -17,22 +17,22 @@
             </div>
         </div>
         <div class="flex w-full justify-between items-center text-2xl py-1 px-1 bg-indigo-950 border-2 border-gray-50 rounded-full">
-            <input type="text" class="pl-2 ml-1 rounded-full text-gray-50 transition-transform duration-200 ease-in-out custom-focus focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Adicionar Item">
+            <input type="text" class="pl-2 ml-1 rounded-full flex-1 mr-4 text-gray-50 transition-transform duration-200 ease-in-out custom-focus focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Adicionar Item">
             <button type="submit" class="flex justify-center w-10 h-10 rounded-full bg-sky-800 text-gray-50 border-2 border-gray-50">+</button>
         </div>
     </header>
-    <main class="flex flex-col gap-y-5 py-2 ">
-        <div class="container__to-do text-gray-200 w-full max-w-sm mx-auto pt-2 pb-5 px-5 border-b-1 border-b-blue-200" data-section="tarefas">
+    <main class="flex flex-col justify-between gap-y-5 py-2 min-h-[70vh]">
+        <div class="container__to-do text-gray-200 w-full max-w-sm mx-auto pt-2 pb-5 px-5 md:max-w-md lg:max-w-lg" data-section="tarefas">
             <h2 class="text-gray-50 text-xl mb-4 tracking-wider">TAREFAS</h2>    
             <div class="task-item flex justify-between items-center text-xl p-4 mb-2 shadow-xl bg-indigo-600 rounded-lg">
                 <input type="checkbox" class="task-checkbox w-7 h-7 appearance-none border-2 rounded-full border-gray-50 bg-gray-50 checked:bg-green-200 checked:border-green-200 relative">
-                <span class="task-text w-50 ml-2">Tarefa á Fazer</span>
+                <span class="task-text flex-1 ml-2">Tarefa á Fazer</span>
                 <button class="delete-btn border-1 border-gray-50 px-2 py-1 rounded-md">Excluir</button>
             </div>
         </div>
-        <div class="container_completed-to-do text-gray-200 w-full max-w-sm mx-auto pt-2 pb-5 px-5" data-section="completas">
+        <div class="container_completed-to-do text-gray-200 w-full border-t-1 border-t-blue-200 max-w-sm mx-auto pt-2 pb-5 px-5 md:max-w-md lg:max-w-lg" data-section="completas">
             <h2 class="text-gray-50 text-xl mb-4 tracking-wider">COMPLETAS</h2>  
-            <div class="task-item flex justify-between items-center text-xl p-4 shadow-xl/30 bg-indigo-600 rounded-lg">
+            <div class="task-item flex justify-between items-center text-xl p-4 mb-2 shadow-xl/30 bg-indigo-600 rounded-lg ">
                 <input type="checkbox" class="task-checkbox w-7 h-7 rounded-full appearance-none border-2 border-gray-50 bg-gray-50 checked:bg-green-200 checked:border-green-200 relative" checked>
                 <span class="task-text w-50 ml-2">Tarefa Completa</span>
                 <button class="delete-btn border-1 border-gray-50 px-2 py-1 rounded-md">Excluir</button>
