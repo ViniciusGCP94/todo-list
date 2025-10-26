@@ -1,16 +1,16 @@
 let tasks = [];
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.querySelector('button[type="submit"]');
     if (addButton) {
-        addButton.addEventListener('click', function(e) {
+        addButton.addEventListener('click', (e) => {
             e.preventDefault();
             addTask();
         });
     }
     const input = document.querySelector('input[placeholder="Adicionar Item"]');
     if (input) {
-        input.addEventListener('keypress', function(e) {
+        input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 addTask();
             }
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function addTask(){
+const addTask = () => {
     const input = document.querySelector('input[type="text"]');
     const taskText = input.value.trim();
 
@@ -32,7 +32,7 @@ function addTask(){
     input.value = '';
 }
 
-function createTaskElement(text, completed) {
+const createTaskElement = (text, completed) => {
     const taskDiv = document.createElement('div');
     taskDiv.className = 'task-item flex justify-between items-center text-xl p-4 mb-2 shadow-xl/30 bg-indigo-600 rounded-lg mb-3';
     taskDiv.innerHTML = `
@@ -44,7 +44,7 @@ function createTaskElement(text, completed) {
     return taskDiv;
 }
 
-function renderTasks() {
+const renderTasks = () => {
     const todoContainer = document.querySelector('[data-section="tarefas"]');
     const completedContainer = document.querySelector('[data-section="completas"]');
 
@@ -61,21 +61,21 @@ function renderTasks() {
     });
 }
 
-document.addEventListener('change', function(e) {
+document.addEventListener('change', (e) => {
     if (e.target.classList.contains('task-checkbox')) {
         const taskElement = e.target.closest('.task-item');
         moveTask(taskElement, e.target.checked);
     }
 });
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
         const taskElement = e.target.closest('.task-item');
         taskElement.remove();
     }
 });
 
-function moveTask(taskElement, isCompleted) {
+const moveTask = (taskElement, isCompleted) => {
     const todoContainer = document.querySelector('[data-section="tarefas"]');
     const completedContainer = document.querySelector('[data-section="completas"]');
     
