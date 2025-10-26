@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const input = document.querySelector('input[placeholder="Adicionar Item"]');
     if (input) {
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        input.addEventListener('keypress', ({key}) => {
+            if (key === 'Enter') {
                 addTask();
             }
         });
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const addTask = () => {
     const input = document.querySelector('input[type="text"]');
-    const taskText = input.value.trim();
+    const {value: taskText} = input;
 
     if (taskText === '') return; 
 
@@ -61,16 +61,16 @@ const renderTasks = () => {
     });
 }
 
-document.addEventListener('change', (e) => {
-    if (e.target.classList.contains('task-checkbox')) {
-        const taskElement = e.target.closest('.task-item');
-        moveTask(taskElement, e.target.checked);
+document.addEventListener('change', ({target}) => {
+    if (target.classList.contains('task-checkbox')) {
+        const taskElement = target.closest('.task-item');
+        moveTask(taskElement, target.checked);
     }
 });
 
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete-btn')) {
-        const taskElement = e.target.closest('.task-item');
+document.addEventListener('click', ({target}) => {
+    if (target.classList.contains('delete-btn')) {
+        const taskElement = target.closest('.task-item');
         taskElement.remove();
     }
 });
