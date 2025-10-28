@@ -26,15 +26,24 @@ const addTask = () => {
 
     const todoContainer = document.querySelector('[data-section="tarefas"]');
 
-    const newTask = createTaskElement(taskText, false);
-    todoContainer.appendChild(newTask);
+    const newTask = {
+        id: Date.now(),
+        text: taskText,
+        completed: false
+    }
+
+    tasks.push(newTask);
+
+    renderTasks();
     
     input.value = '';
 }
 
-const createTaskElement = (text, completed) => {
+const createTaskElement = (id, text, completed) => {
     const taskDiv = document.createElement('div');
     taskDiv.className = 'task-item flex justify-between items-center text-xl p-4 mb-2 shadow-xl/30 bg-indigo-600 rounded-lg mb-3';
+    taskDiv.setAttribute('data-id', id );
+    
     taskDiv.innerHTML = `
         <input type="checkbox" class="task-checkbox w-7 h-7 appearance-none border-2 rounded-full border-gray-50 bg-gray-50 checked:bg-green-200 checked:border-green-200 relative" ${completed ? 'checked' : ''}>
         <span class="task-text flex-1 px-4">${text}</span>
@@ -52,7 +61,7 @@ const renderTasks = () => {
     completedContainer.innerHTML = '';
 
     tasks.forEach(task => {
-        const taskElement = createTaskElement(task.text, task.completed);
+        const taskElement = createTaskElement(task.id, task.text, task.completed);
         if (task.completed) {
             completedContainer.appendChild(taskElement);
         } else {
@@ -64,24 +73,25 @@ const renderTasks = () => {
 document.addEventListener('change', ({target}) => {
     if (target.classList.contains('task-checkbox')) {
         const taskElement = target.closest('.task-item');
-        moveTask(taskElement, target.checked);
+        const taskId = Number(taskElement.getAttribute('data-id'));
+
+        const task = tasks.find(t => t.id === taskId);
+        if (task) {
+            task.completed = target.checked;
+        }
+
+        renderTasks();
     }
 });
 
 document.addEventListener('click', ({target}) => {
     if (target.classList.contains('delete-btn')) {
         const taskElement = target.closest('.task-item');
-        taskElement.remove();
+
+        const taskId = Number(taskElement.getAttribute('data-id'));
+        tasks = tasks.filter(t => t.id !== taskId);
+
+        renderTasks();
     }
 });
 
-const moveTask = (taskElement, isCompleted) => {
-    const todoContainer = document.querySelector('[data-section="tarefas"]');
-    const completedContainer = document.querySelector('[data-section="completas"]');
-    
-    if (isCompleted) {
-        completedContainer.appendChild(taskElement);
-    } else {
-        todoContainer.appendChild(taskElement);
-    }
-}
