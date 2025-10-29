@@ -1,6 +1,25 @@
 let tasks = [];
 
+const saveTasks = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+}
+
+const loadTasks = () => {
+    const savedTasks = localStorage.getItem('tasks');
+    
+    if (!savedTasks) {
+        return [];
+    }
+    
+    return JSON.parse(savedTasks);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    tasks = loadTasks();
+    renderTasks();
+
     const addButton = document.querySelector('button[type="submit"]');
     if (addButton) {
         addButton.addEventListener('click', (e) => {
@@ -33,6 +52,8 @@ const addTask = () => {
     }
 
     tasks.push(newTask);
+
+    saveTasks()
 
     renderTasks();
     
@@ -84,6 +105,8 @@ document.addEventListener('change', ({target}) => {
             task.completed = target.checked;
         }
 
+        saveTasks();
+
         renderTasks();
     }
 });
@@ -95,7 +118,11 @@ document.addEventListener('click', ({target}) => {
         const taskId = Number(taskElement.getAttribute('data-id'));
         tasks = tasks.filter(t => t.id !== taskId);
 
+        saveTasks();
+
         renderTasks();
     }
 });
+
+
 
