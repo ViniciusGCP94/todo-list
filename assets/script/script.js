@@ -1,40 +1,70 @@
 let tasks = [];
 
-document.addEventListener('DOMContentLoaded', function() {
+const saveTasks = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+}
+
+const loadTasks = () => {
+    const savedTasks = localStorage.getItem('tasks');
+    
+    if (!savedTasks) {
+        return [];
+    }
+    
+    return JSON.parse(savedTasks);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    tasks = loadTasks();
+    renderTasks();
+
     const addButton = document.querySelector('button[type="submit"]');
     if (addButton) {
-        addButton.addEventListener('click', function(e) {
+        addButton.addEventListener('click', (e) => {
             e.preventDefault();
             addTask();
         });
     }
     const input = document.querySelector('input[placeholder="Adicionar Item"]');
     if (input) {
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
+        input.addEventListener('keypress', ({key}) => {
+            if (key === 'Enter') {
                 addTask();
             }
         });
     }
 });
 
-function addTask(){
+const addTask = () => {
     const input = document.querySelector('input[type="text"]');
-    const taskText = input.value.trim();
+    if (!input) return;
 
-    if (taskText === '') return; 
+    const {value: taskText} = input;
 
-    const todoContainer = document.querySelector('[data-section="tarefas"]');
+    if (taskText.trim() === '') return; 
 
-    const newTask = createTaskElement(taskText, false);
-    todoContainer.appendChild(newTask);
+    const newTask = {
+        id: Date.now(),
+        text: taskText,
+        completed: false
+    }
+
+    tasks.push(newTask);
+
+    saveTasks()
+
+    renderTasks();
     
     input.value = '';
 }
 
-function createTaskElement(text, completed) {
+const createTaskElement = (id, text, completed) => {
     const taskDiv = document.createElement('div');
     taskDiv.className = 'task-item flex justify-between items-center text-xl p-4 mb-2 shadow-xl/30 bg-indigo-600 rounded-lg mb-3';
+    taskDiv.setAttribute('data-id', id );
+    
     taskDiv.innerHTML = `
         <input type="checkbox" class="task-checkbox w-7 h-7 appearance-none border-2 rounded-full border-gray-50 bg-gray-50 checked:bg-green-200 checked:border-green-200 relative" ${completed ? 'checked' : ''}>
         <span class="task-text flex-1 px-4">${text}</span>
@@ -44,44 +74,55 @@ function createTaskElement(text, completed) {
     return taskDiv;
 }
 
-function renderTasks() {
+const renderTasks = () => {
     const todoContainer = document.querySelector('[data-section="tarefas"]');
     const completedContainer = document.querySelector('[data-section="completas"]');
 
     todoContainer.innerHTML = '';
     completedContainer.innerHTML = '';
 
-    tasks.forEach(task => {
-        const taskElement = createTaskElement(task.text, task.completed);
-        if (task.completed) {
-            completedContainer.appendChild(taskElement);
-        } else {
-            todoContainer.appendChild(taskElement);
-        }
-    });
-}
+    const activeTasks = tasks.filter(task => !task.completed);
+    const completedTasks = tasks.filter(task => task.completed);
 
-document.addEventListener('change', function(e) {
-    if (e.target.classList.contains('task-checkbox')) {
-        const taskElement = e.target.closest('.task-item');
-        moveTask(taskElement, e.target.checked);
-    }
-});
-
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('delete-btn')) {
-        const taskElement = e.target.closest('.task-item');
-        taskElement.remove();
-    }
-});
-
-function moveTask(taskElement, isCompleted) {
-    const todoContainer = document.querySelector('[data-section="tarefas"]');
-    const completedContainer = document.querySelector('[data-section="completas"]');
-    
-    if (isCompleted) {
-        completedContainer.appendChild(taskElement);
-    } else {
+    activeTasks.forEach(task => {
+        const taskElement = createTaskElement(task.id, task.text, task.completed);
         todoContainer.appendChild(taskElement);
-    }
+    });
+
+    completedTasks.forEach(task => {
+        const taskElement = createTaskElement(task.id, task.text, task.completed);
+        completedContainer.appendChild(taskElement);
+    })
 }
+
+document.addEventListener('change', ({target}) => {
+    if (target.classList.contains('task-checkbox')) {
+        const taskElement = target.closest('.task-item');
+        const taskId = Number(taskElement.getAttribute('data-id'));
+
+        const task = tasks.find(t => t.id === taskId);
+        if (task) {
+            task.completed = target.checked;
+        }
+
+        saveTasks();
+
+        renderTasks();
+    }
+});
+
+document.addEventListener('click', ({target}) => {
+    if (target.classList.contains('delete-btn')) {
+        const taskElement = target.closest('.task-item');
+
+        const taskId = Number(taskElement.getAttribute('data-id'));
+        tasks = tasks.filter(t => t.id !== taskId);
+
+        saveTasks();
+
+        renderTasks();
+    }
+});
+
+
+
