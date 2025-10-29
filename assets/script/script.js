@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const addTask = () => {
     const input = document.querySelector('input[type="text"]');
+    if (!input) return;
+
     const {value: taskText} = input;
 
-    if (taskText === '') return; 
-
-    const todoContainer = document.querySelector('[data-section="tarefas"]');
+    if (taskText.trim() === '') return; 
 
     const newTask = {
         id: Date.now(),
@@ -60,14 +60,18 @@ const renderTasks = () => {
     todoContainer.innerHTML = '';
     completedContainer.innerHTML = '';
 
-    tasks.forEach(task => {
+    const activeTasks = tasks.filter(task => !task.completed);
+    const completedTasks = tasks.filter(task => task.completed);
+
+    activeTasks.forEach(task => {
         const taskElement = createTaskElement(task.id, task.text, task.completed);
-        if (task.completed) {
-            completedContainer.appendChild(taskElement);
-        } else {
-            todoContainer.appendChild(taskElement);
-        }
+        todoContainer.appendChild(taskElement);
     });
+
+    completedTasks.forEach(task => {
+        const taskElement = createTaskElement(task.id, task.text, task.completed);
+        completedContainer.appendChild(taskElement);
+    })
 }
 
 document.addEventListener('change', ({target}) => {
