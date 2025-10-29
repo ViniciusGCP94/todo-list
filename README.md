@@ -1,12 +1,28 @@
-# Todo List v1.0
+# Todo List v2.0
 
-Aplicação web para gerenciamento de tarefas com interface responsiva.
+Aplicação web para gerenciamento de tarefas com interface responsiva e persistência de dados.
+
+## ✨ O que mudou da v1.0 para v2.0
+
+### Refatorações Técnicas:
+- Migração completa para arrow functions
+- Implementação de destructuring em event listeners
+- Uso de array methods modernos (filter, find, forEach)
+- Gerenciamento de estado com array tasks
+- Persistência de dados com localStorage
+
+### Melhorias:
+- Tarefas não são mais perdidas ao recarregar a página
+- Código mais moderno e manutenível
+- Arquitetura preparada para expansão futura
 
 ## Funcionalidades
 - Adicionar novas tarefas
 - Marcar tarefas como completas
 - Remover tarefas
 - Separação visual entre ativas/completas
+- **Persistência de dados no navegador (localStorage)**
+
 
 ## Screenshots
 ![Todo List Preview - Desktop](./assets/images/TODO_LIST-V1-Desktop.png)
@@ -16,7 +32,8 @@ Aplicação web para gerenciamento de tarefas com interface responsiva.
 ## Tecnologias
 - HTML5
 - Tailwind CSS  
-- JavaScript ES6
+- JavaScript ES6 (Arrow Functions, Destructuring, Array Methods)
+- localStorage API
 
 ## Estrutura do projeto
 todo-list/
@@ -62,15 +79,17 @@ todo-list/
 
 ## Roadmap
 
-### v2.0 (Próxima versão)
+### ✅ v2.0 (Implementado)
 - Refatoração com JavaScript moderno (ES6+)
-- Implementação de módulos
+- Implementação de destructuring
 - Melhoria na arquitetura do código
+- Persistência com localStorage
 
-### v3.0
-- Persistência de dados no localStorage
+### v3.0 (Próxima Versão)
+- Separação do código em módulos ES6
 - Sistema de categorias
 - Filtros avançados
+- Edição inline de tarefas
 
 ### v4.0
 - Migração para React
