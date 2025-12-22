@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@layer base {
+  body {
+    background-color: var(--color-indigo-900);
+    min-height: 100vh;
+    color: var(--color-gray-50);
+    /* antialiased deixa as fontes mais nítidas em telas modernas */
+  }
+}
+
 .task-checkbox:checked::before {
     content: '✓';
     color: #008000;
