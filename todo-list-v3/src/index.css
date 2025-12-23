@@ -5,6 +5,7 @@
     background-color: var(--color-indigo-900);
     min-height: 100vh;
     color: var(--color-gray-50);
+    padding: 1rem 2rem ;
     /* antialiased deixa as fontes mais nítidas em telas modernas */
   }
 }

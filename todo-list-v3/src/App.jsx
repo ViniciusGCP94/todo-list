@@ -23,18 +23,44 @@ function App() {
       setTasks(updatedTasks)
     }
 
+    const taskChecked = (id) => {
+      const updatedTasks = tasks.map(task => task.id === id ?{...task, completed: !task.completed } : task);
+      setTasks(updatedTasks);
+    }
+
+    const pendingTasks = tasks.filter(task => !task.completed);
+    const completedTasks = tasks.filter(task => task.completed);
+
   return (
     <>
       < Header onAddTask={addTask} />
-      <main className="p-4 max-w-2xl mx-auto flex flex-col gap-4">
-        {tasks.map((task) => (
+      <main className="h-80 max-w-2xl mx-auto flex flex-col justify-between p-4 gap-1">
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-gray-50 text-left text-2xl mb-4 tracking-wider'>Tarefas a fazer </h1>
+          {pendingTasks.map((task) => (
           <TaskItem
             key={task.id}
             task={task}
             onDelete={deleteTask} 
-            className="bg-indigo-950 p-4 rounded-lg border border-gray-500 text-white"
+            onComplete={taskChecked}
           />   
         ))}
+        </section>
+
+        
+        <section className="flex flex-col gap-3">
+        {completedTasks.length > 0 && <hr className="border-gray-600 " />}
+        <h1 className='text-gray-50 text-left text-2xl mb-4 tracking-wider'>Tarefas Completas</h1>
+          {completedTasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onDelete={deleteTask}
+              onComplete={taskChecked}
+            />
+          ))}
+        </section>
+        
       </main>
     </>
   )
