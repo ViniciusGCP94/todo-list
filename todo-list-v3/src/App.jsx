@@ -1,10 +1,19 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/header/header'
 import TaskItem from './components/taskItem/TaskItem';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  //(Lazy Initializer)//
+  const [tasks, setTasks] = useState(() => {
+    const savedTask = localStorage.getItem('storage-tasks');
+    return savedTask ? JSON.parse(savedTask) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('storage-tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
 
     const addTask = (text) => {
         if (text.trim() === "") return;
