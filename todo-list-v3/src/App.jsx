@@ -1,44 +1,11 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import useTasks from './hooks/useTasks';
 import Header from './components/header/header'
 import TaskItem from './components/taskItem/TaskItem';
 
 function App() {
-  //(Lazy Initializer)//
-  const [tasks, setTasks] = useState(() => {
-    const savedTask = localStorage.getItem('storage-tasks');
-    return savedTask ? JSON.parse(savedTask) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('storage-tasks', JSON.stringify(tasks));
-  }, [tasks]);
-
-
-    const addTask = (text) => {
-        if (text.trim() === "") return;
-
-        const newTask = {
-            id: Date.now(),
-            text: text,
-            completed: false,
-        };
-
-        setTasks([...tasks, newTask]);
-    }
-
-    const deleteTask = (id) =>{
-      const updatedTasks = tasks.filter(task => task.id !== id);
-      setTasks(updatedTasks)
-    }
-
-    const taskChecked = (id) => {
-      const updatedTasks = tasks.map(task => task.id === id ?{...task, completed: !task.completed } : task);
-      setTasks(updatedTasks);
-    }
-
-    const pendingTasks = tasks.filter(task => !task.completed);
-    const completedTasks = tasks.filter(task => task.completed);
+  
+  const { addTask, deleteTask, taskChecked, pendingTasks, completedTasks} = useTasks();
 
   return (
     <>
