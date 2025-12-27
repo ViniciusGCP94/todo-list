@@ -1,7 +1,6 @@
-import React from "react";
 import { useState, useEffect } from "react";
 
-function UseTasks () {	
+function useTasks () {	
 const [tasks, setTasks] = useState(() => {
     const savedTask = localStorage.getItem('storage-tasks');
     return savedTask ? JSON.parse(savedTask) : [];
@@ -12,11 +11,12 @@ const [tasks, setTasks] = useState(() => {
   }, [tasks]);
 
 
-  const addTask = (text) => {
+  const addTask = (text, category) => {
     if (text.trim() === "") return;
     const newTask = {
         id: Date.now(),
         text: text,
+        category: category || "Geral",
         completed: false,
     };
 
@@ -41,4 +41,4 @@ const [tasks, setTasks] = useState(() => {
   };
 }
 
-export default { UseTasks };
+export default useTasks ;
