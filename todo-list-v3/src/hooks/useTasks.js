@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 
-function useTasks () {	
-const [tasks, setTasks] = useState(() => {
+export function useTasks () {	
+  const [tasks, setTasks] = useState(() => {
     const savedTask = localStorage.getItem('storage-tasks');
     return savedTask ? JSON.parse(savedTask) : [];
   });
+
 
   useEffect(() => {
     localStorage.setItem('storage-tasks', JSON.stringify(tasks));
@@ -19,7 +20,6 @@ const [tasks, setTasks] = useState(() => {
         category: category || "Geral",
         completed: false,
     };
-
     setTasks([...tasks, newTask]);
   };
 
@@ -30,7 +30,6 @@ const [tasks, setTasks] = useState(() => {
   const taskChecked = (id) => {
     setTasks(tasks.map(task => task.id === id ?{...task, completed: !task.completed } : task));
   }
-
   return {
     tasks,
     addTask,
@@ -41,4 +40,3 @@ const [tasks, setTasks] = useState(() => {
   };
 }
 
-export default useTasks ;

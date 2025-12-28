@@ -1,5 +1,5 @@
 import './App.css'
-import useTasks from './hooks/useTasks';
+import {useTasks} from './hooks/useTasks';
 import Header from './components/header/header'
 import TaskItem from './components/taskItem/TaskItem';
 

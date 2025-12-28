@@ -1,8 +1,10 @@
 import React from "react";
 import { LuTrash2 } from "react-icons/lu";
+import {categories}  from "../../constants/categories";
 
 function TaskItem ({task, onDelete, onComplete}) {
     const {text, category, completed, id} = task;
+    const categoryData = categories.find(cat => cat.id === category);
 
     return(
         <div className="flex items-center justify-between bg-indigo-950 py-2 px-4 rounded-xl border border-gray-500 shadow-lg mb-3">
@@ -16,7 +18,7 @@ function TaskItem ({task, onDelete, onComplete}) {
                     completed ? 'line-through text-gray-500' : 'text-gray-100'
                 }`}>{text}</span>
 
-                <span className="text-[10px] uppercase font-bold tracking-wider text-sky-400 mt-1">
+                <span className={`text-[10px] px-2 py-.75 border uppercase font-bold tracking-wider ${categoryData ? categoryData.color : ''} `}>
                     {category || "Geral"}
                 </span>
             </div>

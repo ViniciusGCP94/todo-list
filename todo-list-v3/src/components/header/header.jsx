@@ -1,17 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import { LuMenu } from "react-icons/lu";
-
-const CATEGORIES = [
-  { id: "Geral", label: "🌐 Geral", color: "bg-gray-500" },
-  { id: "Trabalho", label: "💼 Trabalho", color: "bg-brown-300" },
-  { id: "Pessoal", label: "🏠 Pessoal", color: "bg-blue-500" },
-  { id: "Estudo", label: "📚 Estudo", color: "bg-green-700" },
-  { id: "Saúde", label: "💪 Saúde", color: "bg-red-300" },
-  { id: "Lazer", label: "🎉 Lazer", color: "bg-yellow-500" },
-  { id: "Compras", label: "🛒 Compras", color: "bg-blue-200" },
-  { id: "Finanças", label: "💰 Finanças", color: "bg-green-300" },
-];
+import  {categories}  from "../../constants/categories";
 
 
 function Header ({onAddTask}) {
@@ -51,7 +41,7 @@ function Header ({onAddTask}) {
                         onChange={(e) => setSelectedCategory(e.target.value)}
                         className="appearance-none bg-indigo-900/50 hover:bg-indigo-800 text-sm text-white py-1.5 pl-3 pr-8 border border-gray-50/10 rounded-full cursor-pointer transition-all focus:ring-1 focus:ring-sky-500 outline-none"
                     >
-                        {CATEGORIES.map(cat => (
+                        {categories.map(cat => (
                             <option 
                             key={cat.id} 
                             value={cat.id} 
