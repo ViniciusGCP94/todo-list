@@ -47,9 +47,14 @@ export function useTasks () {
     setTasks(tasks.filter(task => task.id !== id));
   }
 
+  const updateTask = (id, newText, newCategory ) => {
+    setTasks(tasks.map(task => task.id === id ? {...task, text: newText, category: newCategory} : task));
+  }
+
   const taskChecked = (id) => {
     setTasks(tasks.map(task => task.id === id ?{...task, completed: !task.completed } : task));
   }
+  
   return {
     tasks,
     addTask,
@@ -60,6 +65,7 @@ export function useTasks () {
     filteredTasks,
     handleFilterChange,
     filter,
+    updateTask
   };
 }
 

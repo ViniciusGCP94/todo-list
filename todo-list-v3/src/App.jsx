@@ -5,7 +5,7 @@ import TaskItem from './components/taskItem/TaskItem';
 
 function App() {
   
-  const { addTask, deleteTask, taskChecked, filter, completedTasks, pendingTasks, handleFilterChange} = useTasks();
+  const { addTask, deleteTask, taskChecked, filter, completedTasks, pendingTasks, handleFilterChange, updateTask} = useTasks();
 
   return (
     <>
@@ -52,6 +52,7 @@ function App() {
                 task={task}
                 onDelete={deleteTask} 
                 onComplete={taskChecked}
+                updateTask={updateTask}
               />   
             ))}
           </section>
@@ -67,6 +68,7 @@ function App() {
                 task={task}
                 onDelete={deleteTask}
                 onComplete={taskChecked}
+                updateTask={updateTask}
               />
             ))}
           </section>
