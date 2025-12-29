@@ -1,9 +1,29 @@
 import { useState, useEffect } from "react";
+import { categories } from "../constants/categories";
 
 export function useTasks () {	
   const [tasks, setTasks] = useState(() => {
     const savedTask = localStorage.getItem('storage-tasks');
     return savedTask ? JSON.parse(savedTask) : [];
+  });
+
+  const [filter, setFilter] = useState('All');
+
+  function handleFilterChange (filter) {
+    setFilter(filter);
+  } 
+
+  const filteredTasks = tasks.filter((task) => {
+     if (filter === 'All') return true;
+     if (filter === 'Completed') return task.completed;
+     if (filter === 'Pending') return !task.completed;
+
+     const isCategory = categories.some(cat => cat.id === filter);
+     if (isCategory){
+      return task.category === filter;
+     }
+
+     return false;
   });
 
 
@@ -36,7 +56,10 @@ export function useTasks () {
     deleteTask,
     taskChecked,
     pendingTasks: tasks.filter(task => !task.completed),
-    completedTasks: tasks.filter(task => task.completed)
+    completedTasks: tasks.filter(task => task.completed),
+    filteredTasks,
+    handleFilterChange,
+    filter,
   };
 }
 
