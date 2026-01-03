@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { categories } from "../constants/categories";
 
 export function useTasks () {	
@@ -13,18 +13,27 @@ export function useTasks () {
     setFilter(filter);
   } 
 
-  const filteredTasks = tasks.filter((task) => {
-     if (filter === 'All') return true;
-     if (filter === 'Completed') return task.completed;
-     if (filter === 'Pending') return !task.completed;
+  const filteredTasks = useMemo(() => { 
+    return tasks.filter((task) => {
+      if (filter === 'All') return true;
+      if (filter === 'Completed') return task.completed;
+      if (filter === 'Pending') return !task.completed;
 
-     const isCategory = categories.some(cat => cat.id === filter);
-     if (isCategory){
-      return task.category === filter;
-     }
+      const isCategory = categories.some(cat => cat.id === filter);
+      if (isCategory){
+        return task.category === filter;
+      }
 
-     return false;
-  });
+      return false;
+  })}, [tasks, filter]);	
+
+  const pendingTasks = useMemo(() => {
+    return tasks.filter(task => !task.completed)
+  },[tasks]);
+
+  const completedTasks = useMemo(() => {
+    return tasks.filter(task => task.completed)
+  }, [tasks]);
 
 
   useEffect(() => {
@@ -60,8 +69,8 @@ export function useTasks () {
     addTask,
     deleteTask,
     toggleTaskCompleted,
-    pendingTasks: tasks.filter(task => !task.completed),
-    completedTasks: tasks.filter(task => task.completed),
+    pendingTasks,
+    completedTasks,
     filteredTasks,
     handleFilterChange,
     filter,
