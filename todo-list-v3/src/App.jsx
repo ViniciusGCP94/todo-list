@@ -5,7 +5,7 @@ import TaskItem from './components/taskItem/TaskItem';
 
 function App() {
   
-  const { addTask, deleteTask, taskChecked, filter, completedTasks, pendingTasks, handleFilterChange, updateTask} = useTasks();
+  const { addTask, deleteTask, toggleTaskCompleted, filter, completedTasks, pendingTasks, handleFilterChange, updateTask} = useTasks();
 
   return (
     <>
@@ -51,7 +51,7 @@ function App() {
                 key={task.id}
                 task={task}
                 onDelete={deleteTask} 
-                onComplete={taskChecked}
+                onComplete={toggleTaskCompleted}
                 updateTask={updateTask}
               />   
             ))}
@@ -67,12 +67,12 @@ function App() {
                 key={task.id}
                 task={task}
                 onDelete={deleteTask}
-                onComplete={taskChecked}
+                onComplete={toggleTaskCompleted}
                 updateTask={updateTask}
               />
             ))}
           </section>
-        )}     {/*Tentando fazer deploy da branch (feature/setup-react-vite-tailwind) na Vercel */ }
+        )}   
       </main>
     </>
   )

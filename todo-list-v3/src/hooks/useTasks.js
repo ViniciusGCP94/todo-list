@@ -51,7 +51,7 @@ export function useTasks () {
     setTasks( prev => prev.map(task => task.id === id ? {...task, text: newText, category: newCategory} : task));
   }
 
-  const taskChecked = (id) => {
+  const toggleTaskCompleted = (id) => {
     setTasks( prev =>  prev.map(task => task.id === id ?{...task, completed: !task.completed } : task));
   }
   
@@ -59,7 +59,7 @@ export function useTasks () {
     tasks,
     addTask,
     deleteTask,
-    taskChecked,
+    toggleTaskCompleted,
     pendingTasks: tasks.filter(task => !task.completed),
     completedTasks: tasks.filter(task => task.completed),
     filteredTasks,
