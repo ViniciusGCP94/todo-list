@@ -4,12 +4,12 @@ function FilterBar (props) {
     const {setFilter, filter} = props;
 
     return (
-        <div className="flex gap-4 mb-6 justify-end">
+        <div className="w-full flex gap-4 py-4 mb-6 justify-center md:justify-end">
             <button 
                 onClick={() => setFilter('All')}
                 className={`px-2 py-0.5 border-2 rounded-lg transition-all ${
                 filter === 'All' 
-                ? 'bg-indigo-800 border-indigo-800 text-white' 
+                ? 'bg-indigo-800 text-white border border-amber-50' 
                 : 'bg-indigo-950 border-indigo-950 text-gray-300'
                 }`}
             >
@@ -19,7 +19,7 @@ function FilterBar (props) {
                 onClick={() => setFilter('Pending')}
                 className={`px-2 py-0.5 border-2 rounded-lg transition-all ${
                 filter === 'Pending' 
-                ? 'bg-indigo-800 border-indigo-800 text-white' 
+                ? 'bg-indigo-800 text-white border border-amber-50' 
                 : 'bg-indigo-950 border-indigo-950 text-gray-300'
                 }`}
             >
@@ -29,7 +29,7 @@ function FilterBar (props) {
                 onClick={() => setFilter('Completed')}
                 className={`px-2 py-0.5 border-2 rounded-lg transition-all ${
                 filter === 'Completed' 
-                ? 'bg-indigo-800 border-indigo-800 text-white' 
+                ? 'bg-indigo-800 text-white border border-amber-50' 
                 : 'bg-indigo-950 border-indigo-950 text-gray-300'
                 }`}
                 

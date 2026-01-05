@@ -3,14 +3,16 @@ import {useTasks} from './hooks/useTasks';
 import Header from './components/header/header'
 import TaskList from './components/taskList/taskList';
 import FilterBar from './components/filterBar/filterBar';
+import TaskForm from './components/taskForm/taskForm';
 function App() {
   
   const { addTask, filter, completedTasks, pendingTasks, deleteTask, toggleTaskCompleted, updateTask, handleFilterChange} = useTasks();
 
   return (
     <>
-      < Header onAddTask={addTask} />
-      <main className="h-80 max-w-2xl mx-auto flex flex-col justify-between p-4 gap-1">
+      < Header/>
+      <main className="min-h-screen max-w-2xl mx-auto flex flex-col gap-1 lg:justify-start">
+        <TaskForm onAddTask={addTask} />
         <FilterBar 
           filter={filter} 
           setFilter={handleFilterChange} 
