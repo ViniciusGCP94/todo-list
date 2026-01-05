@@ -28,7 +28,7 @@ function TaskForm ({onAddTask}) {
         <div className="w-1/2 relative flex justify-end items-center">
             <div
             onClick={() => setIsOpen(!isOpen)}
-            className="w-auto min-w-25 flex items-center gap-2 bg-indigo-900/50 hover:bg-indigo-800 text-sm text-white py-1 px-2 border border-gray-50/10 rounded-full cursor-pointer transition-all focus:ring-1 focus:ring-sky-500 outline-none select-none">
+            className="w-auto min-w-30 flex items-center gap-2 bg-indigo-900/50 hover:bg-indigo-800 text-sm text-white py-1 px-1 border border-gray-50/10 rounded-full cursor-pointer transition-all focus:ring-1 focus:ring-sky-500 outline-none select-none">
                 <span>{categories.find(c => c.id === selectedCategory)?.label || 'Geral'}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 text-sky-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,7 +43,7 @@ function TaskForm ({onAddTask}) {
                             onClick={() => {setSelectedCategory(category.id);
                             setIsOpen(false);
                         }}
-                            className="px-4 py-2 hover:bg-indigo-800 cursor-pointer text-gray-200 text-sm rounded-lg"
+                            className="px-4 py-2 hover:bg-indigo-800 cursor-pointer text-gray-200 text-xs rounded-lg"
                         >
                             {category.label}
                         </li>

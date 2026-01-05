@@ -6,7 +6,7 @@ import FilterBar from './components/filterBar/filterBar';
 import TaskForm from './components/taskForm/taskForm';
 function App() {
   
-  const { addTask, filter, completedTasks, pendingTasks, deleteTask, toggleTaskCompleted, updateTask, handleFilterChange} = useTasks();
+  const { addTask, filter, filteredTasks, deleteTask, toggleTaskCompleted, updateTask, handleFilterChange} = useTasks();
 
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
         { (filter === 'All' || filter === 'Pending') && 
           <TaskList 
           title="Tarefas a fazer" 
-          tasks={pendingTasks}
+          tasks={filteredTasks.filter(task => !task.completed)}
           onDelete={deleteTask}
           onComplete={toggleTaskCompleted}
           updateTask={updateTask} 
@@ -29,7 +29,7 @@ function App() {
         { (filter === 'All' || filter === 'Completed') && 
           <TaskList 
           title="Tarefas concluídas" 
-          tasks={completedTasks} 
+          tasks={filteredTasks.filter(task => task.completed)} 
           onDelete={deleteTask}
           onComplete={toggleTaskCompleted}
           updateTask={updateTask} 
