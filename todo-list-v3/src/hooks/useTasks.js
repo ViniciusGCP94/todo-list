@@ -27,14 +27,6 @@ export function useTasks () {
       return false;
   })}, [tasks, filter]);	
 
-  const pendingTasks = useMemo(() => {
-    return tasks.filter(task => !task.completed)
-  },[tasks]);
-
-  const completedTasks = useMemo(() => {
-    return tasks.filter(task => task.completed)
-  }, [tasks]);
-
 
   useEffect(() => {
     localStorage.setItem('storage-tasks', JSON.stringify(tasks));
@@ -69,8 +61,6 @@ export function useTasks () {
     addTask,
     deleteTask,
     toggleTaskCompleted,
-    pendingTasks,
-    completedTasks,
     filteredTasks,
     handleFilterChange,
     filter,
