@@ -43,23 +43,24 @@ function TaskItem ({task, onDelete, onComplete, updateTask}) {
                     <LuTrash2 size={20} />
                 </button>
                 {isEditing && (
-                    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-                        <div className="flex justify-between gap-2 w-1/2 bg-indigo-900 p-4">
-                            <div className="w-lg border-gray-100 flex justify-between">
+                    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50">
+                        <div className="w-full flex flex-wrap justify-between gap-6 bg-indigo-900 p-2 rounded-lg md:w-1/2 lg:h-48 lg:gap-2 lg:p-4">
+                            <h2 className="text-xl font-bold lg:w-full">Edite sua Tarefa</h2>
+                            <div className="w-full border-gray-100 flex justify-between lg:w-2/3">
                                 <textarea 
                                 type="text"
                                 value={tempText}
                                 onChange={(e) => setTempText(e.target.value)} 
-                                className="w-9/10 text-lg border-2 rounded bg-indigo-950"
+                                className="w-full text-lg border-2 rounded bg-indigo-950 lg:h-auto"
                                 />
                             </div>
                             
-                            <div className="flex flex-col items-end">
-                                <div className="relative flex items-center bg-indigo-900 px-2 hover:bg-indigo-950 transition-all">
+                            <div className="w-full flex justify-between md:items-end lg:flex-col lg:w-1/4">
+                                <div className="relative flex bg-indigo-900 pr-2 hover:bg-indigo-950 transition-all lg:items-center lg:pl-0 lg:pr-0">
                                     <select
                                         value={tempCategory}
                                         onChange={(e) => setTempCategory(e.target.value)}
-                                        className="w-full bg-indigo-900 focus:bg-indigo-950 text-white text-left py-1 pl-2 pr-6 rounded-lg border-2 appearance-none cursor-pointer focus:outline-none all-transition"
+                                        className="w-full bg-indigo-900 focus:bg-indigo-950 text-white text-left lg:py-1 pl-2 pr-6 rounded-lg border-2 appearance-none cursor-pointer focus:outline-none all-transition"
                                     >
                                         {categories.map(cat => (
                                             <option 
@@ -70,11 +71,11 @@ function TaskItem ({task, onDelete, onComplete, updateTask}) {
                                             </option>
                                         ))}
                                     </select>
-                                    <div className="absolute right-3 pointer-events-none text-gray-400">
+                                    <div className="absolute right-3 top-4 md:top-1 pointer-events-none text-gray-400">
                                         <LuChevronDown size={20} />
                                     </div>
                                 </div>
-                                <div className="flex justify-end gap-1 mt-5">
+                                <div className="flex justify-end gap-1 mt-5 md:mt-2">
                                     <button
                                     onClick={() => setIsEditing(false)}
                                     className="px-2 py-.25 border-2 rounded bg-indigo-700">
