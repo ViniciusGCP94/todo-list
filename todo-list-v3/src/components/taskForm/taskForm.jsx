@@ -5,6 +5,7 @@ import { categories } from '../../constants/categories';
 function TaskForm ({onAddTask}) {
     const [taskInput, setTaskInput] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    
 
     const [selectedCategory, setSelectedCategory] = useState('Geral');
 
