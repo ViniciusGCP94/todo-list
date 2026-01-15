@@ -23,7 +23,7 @@ function TaskItem ({task, onDelete, onComplete, updateTask, }) {
                     completed ? 'line-through text-gray-500' : 'text-gray-100'
                 }`}>{text}</span>
 
-                <span className={`text-[10px] px-2 py-.75 border uppercase font-bold tracking-wider ${categoryData ? categoryData.color : ''} `}>
+                <span className={`text-[8px] px-2 py-1 border uppercase font-bold tracking-wider ${categoryData ? categoryData.color : ''} `}>
                     {category || "Geral"}
                 </span>
             </div>

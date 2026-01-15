@@ -4,6 +4,7 @@ import Header from './components/header/header'
 import TaskList from './components/taskList/taskList';
 import FilterBar from './components/filterBar/filterBar';
 import TaskForm from './components/taskForm/taskForm';
+
 function App() {
   
   const { addTask, filter, filteredTasks, deleteTask, toggleTaskCompleted, updateTask, handleFilterChange} = useTasks();
