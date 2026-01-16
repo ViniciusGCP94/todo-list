@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import CategorySelect from '../common/CategorySelect';
+import ActionButton from '../common/ActionButton';
 import { categories } from "../../constants/categories";
 
 const EditTaskModal = ({ task, isOpen, isClose, updateTask }) => {
@@ -48,18 +49,23 @@ const EditTaskModal = ({ task, isOpen, isClose, updateTask }) => {
                     </div>
                     
                     <div className="flex gap-3 w-full sm:w-auto">
-                        <button 
-                            onClick={() => isClose(false)} 
-                            className="flex-1 sm:flex-none px-6 py-2.5 border border-white/10 rounded-full bg-white/5 text-gray-300 text-sm font-medium hover:bg-white/10 transition-all"
+                        <ActionButton 
+                        variant="secondary" 
+                        onClick={() => isClose(false)}
                         >
-                            Cancelar
-                        </button>
-                        <button 
-                            onClick={() => { updateTask(task.id, tempText, tempCategory); isClose(false); }} 
-                            className="flex-1 sm:flex-none px-8 py-2.5 rounded-full bg-indigo-800 text-white text-sm font-bold hover:bg-indigo-600 hover:shadow-[0_0_20px_rgba(79,70,229,0.5)] transition-all"
+                        Cancelar
+                        </ActionButton>
+                         
+                        <ActionButton 
+                        variant="primary" 
+                        hasNeon={true} 
+                        onClick={() => {
+                            updateTask(task.id, tempText, tempCategory)
+                            isClose(false)
+                        }}
                         >
-                            Salvar Alterações
-                        </button>
+                        Salvar Alterações
+                        </ActionButton>
                     </div>
                 </div>
             </div>
