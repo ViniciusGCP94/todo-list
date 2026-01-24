@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import CategorySelect from '../common/CategorySelect'; 
 import { categories } from '../../constants/categories'; 
 
-const TaskForm = () => {
+// 1. Receba o addTask como prop
+const TaskForm = ({ addTask }) => { 
     const [taskInput, setTaskInput] = useState(''); 
     const [selectedCategory, setSelectedCategory] = useState('geral'); 
 
@@ -10,7 +11,8 @@ const TaskForm = () => {
         e.preventDefault();
         if (!taskInput.trim()) return;
         
-        console.log("Tarefa:", taskInput, "Categoria:", selectedCategory);
+        // 2. Chame a função real que salva a tarefa
+        addTask(taskInput, selectedCategory); 
         
         setTaskInput('');
     };
@@ -29,9 +31,9 @@ const TaskForm = () => {
             />
             <div className='w-1/2 relative flex justify-end items-center gap-2 pr-1'>
                 <CategorySelect 
-                selectedCategory={selectedCategory} 
-                onCategoryChange={setSelectedCategory} 
-                categories={categories}
+                    selectedCategory={selectedCategory} 
+                    onCategoryChange={setSelectedCategory} 
+                    categories={categories}
                 />
                 <button 
                     type="submit"
@@ -40,7 +42,6 @@ const TaskForm = () => {
                     + 
                 </button>
             </div>
-            
         </form>
     );
 };

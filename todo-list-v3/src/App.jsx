@@ -13,7 +13,7 @@ function App() {
     <>
       < Header/>
       <main className="min-h-screen max-w-2xl mx-auto flex flex-col gap-1 lg:justify-start">
-        <TaskForm onAddTask={addTask} />
+        <TaskForm addTask={addTask} />
         <FilterBar 
           filter={filter} 
           setFilter={handleFilterChange} 
