@@ -46,9 +46,14 @@ Este projeto me ensinou a importância da **consciência situacional** no desenv
 
 ## 📸 Visual do Projeto
 
-![Preview do Projeto](link-da-sua-imagem-ou-gif-aqui)
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/129c863c-2a75-40aa-a2b4-90e32c7f4037" width="100%" controls autoplay muted loop>
+    Seu navegador não suporta o player de vídeo.
+  </video>
+</div>
 
 ---
+
 
 ## 🗺️ Roadmap de Evolução
 
