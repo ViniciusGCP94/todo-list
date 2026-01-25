@@ -1,16 +1,68 @@
-# React + Vite
+# 📝 Todo List Pro - Engenharia de Processo (v3)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto marca o momento em que deixei de apenas "escrever código" para **projetar soluções**. O foco desta versão foi a transição consciente do JavaScript Vanilla para o ecossistema React, documentando cada obstáculo como uma oportunidade de aprendizado.
 
-Currently, two official plugins are available:
+## 🧠 Mentalidade de Aprendizado: O que este projeto representa?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para mim, aprender a aprender significa entender o "porquê" por trás das ferramentas. Neste projeto, foquei em três pilares:
 
-## React Compiler
+### 1. Migração de Paradigma (Adaptabilidade)
+* Realizei a transição de um modelo **imperativo** (v2), onde a manipulação do DOM era manual, para um modelo **declarativo** (v3).
+* No React, passei a utilizar o estado como a única fonte da verdade, permitindo que a interface reaja de forma previsível às mudanças nos dados.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Resolução de Problemas Reais (Resiliência)
+* **Fluxo de Dados**: Identifiquei e corrigi um erro de comunicação onde o componente `TaskForm` não disparava a criação de tarefas devido a uma divergência no nome das *props* recebidas.
+* **Gerenciamento de Erros no Git**: Superei um erro crítico de "not a git repository" causado por tentar executar comandos fora do diretório correto e arquivos travados pelo sistema.
+* **Recuperação de Desastres**: Utilizei comandos avançados de recuperação (`git reset --hard` e `git checkout -f`) para restaurar a integridade do projeto após falhas na troca de branches.
 
-## Expanding the ESLint configuration
+### 3. Atenção ao Detalhe e UX
+* Implementei lógica de **micro-interações** para evitar que as tarefas desapareçam bruscamente da interface.
+* Utilizei o estado `isClosing` e a função `setTimeout` no `TaskItem.jsx` para garantir um feedback visual suave (animação de saída) antes da atualização definitiva do estado.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Especificações Técnicas Implementadas
+
+* **Componentização**: Divisão da interface em partes independentes e reutilizáveis, como `TaskForm` e `TaskItem`.
+* **Custom Hooks**: Isolação de toda a lógica de negócio e regras de CRUD no hook `useTasks.js`, mantendo os componentes visuais focados apenas na apresentação.
+* **Persistência de Dados**: Sincronização automática com o `localStorage` através de `useEffect`, garantindo a permanência dos dados entre sessões.
+* **Tailwind CSS**: Implementação de design responsivo e moderno utilizando classes utilitárias.
+
+---
+
+## 🚀 Como este projeto contribuiu para o meu crescimento?
+
+Este projeto me ensinou a importância da **consciência situacional** no desenvolvimento. Além do código, aprendi a diagnosticar falhas no ambiente de trabalho (como o erro de diretório no terminal externo) e a manter a calma para recuperar arquivos que pareciam perdidos no banco de dados do Git. Resolver esses problemas de infraestrutura foi um passo fundamental para a minha maturidade técnica.
+
+---
+
+## 🏗️ Como Executar
+1. Clone o repositório.
+2. Navegue até a pasta: `cd todo-list-v3`.
+3. Instale as dependências: `npm install`.
+4. Inicie o projeto: `npm run dev`.
+
+---
+
+## 📸 Visual do Projeto
+
+![Preview do Projeto](link-da-sua-imagem-ou-gif-aqui)
+
+---
+
+## 🗺️ Roadmap de Evolução
+
+- [x] Migração para React (V3)
+- [ ] Refatoração de Modais para **React Portal** (Para desbloquear animações de transform)
+- [ ] Implementação de Testes Unitários com Vitest
+- [ ] Integração com Banco de Dados (Firebase/Supabase)
+- [ ] Dark Mode com Tailwind CSS
+
+---
+
+## Autor
+### Vinicius Pereira
+
+- GitHub: [@ViniciusGCP94](https://github.com/ViniciusGCP94)
+- LinkedIn: [vinicius-gcp](https://linkedin.com/in/vinicius-gcp)
+- Email: viniciusgcp94@gmail.com
