@@ -16,7 +16,6 @@ Para mim, aprender a aprender significa entender o "porquê" por trás das ferra
 * **Recuperação de Desastres**: Utilizei comandos avançados de recuperação (`git reset --hard` e `git checkout -f`) para restaurar a integridade do projeto após falhas na troca de branches.
 
 ### 3. Atenção ao Detalhe e UX
-* Implementei lógica de **micro-interações** para evitar que as tarefas desapareçam bruscamente da interface.
 * Utilizei o estado `isClosing` e a função `setTimeout` no `TaskItem.jsx` para garantir um feedback visual suave (animação de saída) antes da atualização definitiva do estado.
 
 ---
