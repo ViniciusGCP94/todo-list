@@ -35,9 +35,20 @@ Este projeto me ensinou a importância da **consciência situacional** no desenv
 
 ---
 
+## 🛠️ Tecnologias Utilizadas
+
+- React (Hooks)
+- JavaScript (ES6+)
+- Vite
+- Tailwind CSS
+- LocalStorage
+- ESLint
+
+---
+
 ## 🏗️ Como Executar
 1. Clone o repositório.
-2. Navegue até a pasta: `cd todo-list-v3`.
+2. Navegue até a pasta: `cd todo-list`.
 3. Instale as dependências: `npm install`.
 4. Inicie o projeto: `npm run dev`.
 
