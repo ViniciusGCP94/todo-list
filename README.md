@@ -64,6 +64,17 @@ Este projeto me ensinou a importância da **consciência situacional** no desenv
 
 ---
 
+## 🌐 Projeto Online
+
+Você pode testar a aplicação ao vivo aqui:
+🔗 https://todo-list-zeta-rouge.vercel.app
+
+Essa é a versão publicada da última release do projeto, com:
+- Adicionar e apagar tarefas
+- Marcação de tarefas concluídas
+- Armazenamento no LocalStorage
+
+---
 
 ## 🗺️ Roadmap de Evolução
 
