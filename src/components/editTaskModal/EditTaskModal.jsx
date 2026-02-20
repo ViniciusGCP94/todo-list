@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import { useState} from 'react';
 import CategorySelect from '../common/CategorySelect';
 import ActionButton from '../common/ActionButton';
 import { categories } from "../../constants/categories";

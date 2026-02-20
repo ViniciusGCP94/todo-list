@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { LuTrash2, LuPencilLine } from "react-icons/lu";
 import { categories } from "../../constants/categories";
 import EditTaskModal from "../editTaskModal/EditTaskModal";

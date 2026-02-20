@@ -129,17 +129,34 @@ Resolver problemas de infraestrutura foi tão importante quanto resolver bugs de
 ## 🏗️ Arquitetura do Projeto
 
 ```
-src/
+rc/
 ├── components/
-│   ├── TaskForm.jsx      → Formulário de criação de tarefas
-│   └── TaskItem.jsx      → Item individual com animação de saída
+│   ├── common/
+│   │   ├── ActionButton.jsx     → Botão reutilizável de ações
+│   │   └── CategorySelect.jsx   → Seletor de categorias reutilizável
+│   ├── editTaskModal/
+│   │   └── EditTaskModal.jsx    → Modal de edição de tarefa
+│   ├── filterBar/
+│   │   └── filterBar.jsx        → Barra de filtros das tarefas
+│   ├── header/
+│   │   └── header.jsx           → Cabeçalho da aplicação
+│   ├── taskForm/
+│   │   └── taskForm.jsx         → Formulário de criação de tarefas
+│   ├── taskItem/
+│   │   └── TaskItem.jsx         → Item individual com animação de saída
+│   └── taskList/
+│       └── taskList.jsx         → Lista que renderiza os TaskItems
+├── constants/
+│   └── categories.js            → Categorias disponíveis (fonte única de verdade)
 ├── hooks/
-│   └── useTasks.js       → Toda a lógica de CRUD e localStorage
-└── App.jsx               → Orquestrador dos componentes
+│   └── useTasks.js              → Toda a lógica de CRUD e localStorage
+└── App.jsx         
 ```
 
 **Decisões de arquitetura:**
 - `useTasks` centraliza toda a lógica de negócio (SRP)
+- `common/` agrupa componentes genuinamente reutilizáveis (`ActionButton`, `CategorySelect`)
+- `constants/categories.js` como fonte única de verdade para categorias — evita duplicação
 - `TaskItem` usa `isClosing` + `setTimeout` para animação suave antes de remover do estado
 - Componentes visuais focados apenas em apresentação
 
@@ -168,7 +185,11 @@ Acesse `http://localhost:5173`
 ## ✅ Funcionalidades
 
 - [x] Adicionar tarefas
+- [x] Editar tarefas (modal)
 - [x] Marcar tarefas como concluídas
+- [x] Remover tarefas com animação de saída
+- [x] Filtrar tarefas por status/categoria
+- [x] Categorizar tarefas
 - [x] Persistência com localStorage
 - [x] Design responsivo
 
