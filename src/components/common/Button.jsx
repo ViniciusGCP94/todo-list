@@ -1,5 +1,3 @@
-import React from 'react'
-
 const buttonVariants = {
     base: "font-bold transition-all flex items-center justify-center",
     neon: "hover:shadow-[0_0_20px_rgba(79,70,229,0.5)] ",
@@ -10,7 +8,7 @@ const buttonVariants = {
 }
 
 
-const ActionButton = ({children, onClick, variant, className, hasNeon}) => {
+const Button = ({children, onClick, variant, className, hasNeon}) => {
 
     const getVariantClasses = buttonVariants[variant] || "";
 
@@ -28,4 +26,4 @@ const ActionButton = ({children, onClick, variant, className, hasNeon}) => {
     )
 }
 
-export default ActionButton
+export default Button

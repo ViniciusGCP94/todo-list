@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { LuChevronDown } from "react-icons/lu";
 
-const CategorySelect = ({selectedCategory, onCategoryChange, categories, direction}) => {
+const Select = ({selectedCategory, onCategoryChange, categories, direction}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const selectRef = useRef(null);
@@ -53,4 +53,4 @@ const CategorySelect = ({selectedCategory, onCategoryChange, categories, directi
     )
 };
 
-export default CategorySelect;
+export default Select;

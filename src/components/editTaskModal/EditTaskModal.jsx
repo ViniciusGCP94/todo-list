@@ -1,7 +1,8 @@
 import { useState} from 'react';
-import CategorySelect from '../common/CategorySelect';
-import ActionButton from '../common/ActionButton';
+import Select from '../common/Select';
+import Button from '../common/Button';
 import { categories } from "../../constants/categories";
+import { createPortal } from 'react-dom';
 
 const EditTaskModal = ({ task, isOpen, isClose, updateTask }) => {
     const [tempText, setTempText] = useState(task?.text || "");
@@ -9,7 +10,7 @@ const EditTaskModal = ({ task, isOpen, isClose, updateTask }) => {
 
     if (!isOpen) return null;
 
-    return (
+    return createPortal (
         <div className="fixed inset-0 bg-indigo-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-100 transition-all">
             
             <div className="w-full max-w-lg bg-indigo-950 border border-gray-100 backdrop-blur-md p-6 rounded-4xl shadow-2xl flex flex-col gap-6 scale-in-center z-50">
@@ -39,7 +40,7 @@ const EditTaskModal = ({ task, isOpen, isClose, updateTask }) => {
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">
                     
                     <div className="w-full sm:w-auto">
-                        <CategorySelect
+                        <Select
                             selectedCategory={tempCategory} 
                             onCategoryChange={setTempCategory} 
                             categories={categories}
@@ -48,14 +49,14 @@ const EditTaskModal = ({ task, isOpen, isClose, updateTask }) => {
                     </div>
                     
                     <div className="flex gap-3 w-full sm:w-auto">
-                        <ActionButton 
+                        <Button 
                         variant="secondary" 
                         onClick={() => isClose(false)}
                         >
                         Cancelar
-                        </ActionButton>
+                        </Button>
                          
-                        <ActionButton 
+                        <Button 
                         variant="primary" 
                         hasNeon={true} 
                         onClick={() => {
@@ -64,11 +65,12 @@ const EditTaskModal = ({ task, isOpen, isClose, updateTask }) => {
                         }}
                         >
                         Salvar Alterações
-                        </ActionButton>
+                        </Button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.getElementById('modal-root')
     );
 };
 

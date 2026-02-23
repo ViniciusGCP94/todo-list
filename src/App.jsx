@@ -1,17 +1,28 @@
 import './App.css'
-import {useTasks} from './hooks/useTasks';
+/*import {useTasks} from './hooks/useTasks';
 import Header from './components/header/header'
 import TaskList from './components/taskList/taskList';
 import FilterBar from './components/filterBar/filterBar';
-import TaskForm from './components/taskForm/taskForm';
+import TaskForm from './components/taskForm/taskForm';*/
+import Card from './components/common/Card';
+import Input from './components/common/Input';
+import Button from './components/common/Button';
 
 function App() {
   
-  const { addTask, filter, filteredTasks, deleteTask, toggleTaskCompleted, updateTask, handleFilterChange} = useTasks();
+  /*const { addTask, filter, filteredTasks, deleteTask, toggleTaskCompleted, updateTask, handleFilterChange} = useTasks();*/
 
   return (
     <>
-      < Header/>
+      <Card><h1>Teste de Card</h1></Card>
+      <Input label="Nome do Projeto" placeholder="Ex: Estudo de React" />
+      <Button
+      variant="secondary"
+      onClick={() => alert('Projeto criado!')}
+      className="mt-4"
+      >Criar Projeto</Button>
+
+      {/* < Header/>
       <main className="min-h-screen max-w-2xl mx-auto flex flex-col gap-1 lg:justify-start">
         <TaskForm addTask={addTask} />
         <FilterBar 
@@ -36,7 +47,7 @@ function App() {
           updateTask={updateTask} 
           /> 
         }
-      </main>
+      </main>*/}
     </>
   )
 }
