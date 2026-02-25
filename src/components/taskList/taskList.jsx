@@ -1,4 +1,3 @@
-import React from 'react'
 import TaskItem from '../taskItem/TaskItem';
 
 function TaskList (props) {

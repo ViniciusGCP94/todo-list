@@ -1,4 +1,3 @@
-import React from 'react'
 import ActionButton from '../common/ActionButton';
 
 function FilterBar (props) {
