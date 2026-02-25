@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CategorySelect from '../common/CategorySelect'; 
 import { categories } from '../../constants/categories'; 
 
-// 1. Receba o addTask como prop
 const TaskForm = ({ addTask }) => { 
     const [taskInput, setTaskInput] = useState(''); 
     const [selectedCategory, setSelectedCategory] = useState('geral'); 
@@ -11,7 +10,6 @@ const TaskForm = ({ addTask }) => {
         e.preventDefault();
         if (!taskInput.trim()) return;
         
-        // 2. Chame a função real que salva a tarefa
         addTask(taskInput, selectedCategory); 
         
         setTaskInput('');
