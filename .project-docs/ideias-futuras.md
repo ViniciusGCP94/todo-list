@@ -120,6 +120,21 @@
 
 ---
 
+```markdown
+### [Emoji] Colocar uma restrição do usuário ao ver as manutenções
+- **O quê:** Quero que somente usuários de níveis altos possam ver todas as manutenções, usuários de níveis baixos vejam somente as do seu setor ou da sua máquina.
+- **Por quê:** [Motivação / benefício]. Hierarquia e um profissional não tecnico não precisa saber das manutenções em outros lugares da empresa.
+- **Como fazer:** [Tecnologias / abordagem]. Não sei.
+- **Complexidade:** 🟢/🟡/🔴 ([X] horas)
+- **Prioridade:** 🟢/🟡/🔴
+- **Dependências:** [O que precisa estar pronto antes]
+- **Avaliação crítica:** [Realmente precisa? Vale o tempo?]
+- **Decisão:** [Implementar? / Talvez / Não]
+- **Referências:** [Links úteis]
+- **Status:** [Planejado / Avaliação / Descartado]
+- **Origem:** Em toda empresa há niveis de hierarquia e através destes níveis você pode ou não fazer/ver algo, é algo que toda empresa tem.
+```
+
 ## 📊 ESTATÍSTICAS
 
 ### Por Prioridade:

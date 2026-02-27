@@ -1,25 +1,18 @@
 import { create } from 'zustand';
 
-export const useProjectStore = create((set) => ({
-  projects: [
-    { 
-      id: '1', 
-      name: 'Meu Primeiro Projeto', 
-      tasks: [
-        { id: 101, text: 'Configurar Zustand', completed: true },
-        { id: 102, text: 'Criar ProjectCard', completed: false }
-      ] 
-    }
-  ],
-
-  addProject: (name) => set((state) => ({
-    projects: [
-      ...state.projects, 
-      { id: crypto.randomUUID(), name, tasks: [] }
-    ]
+export const useMaintenanceStore = create((set) => ({
+  maquinas: [],
+  
+  addMaquina: (maquina) => set((state) => ({
+    maquinas: [...state.maquinas, { 
+      id: crypto.randomUUID(), 
+      ...maquina 
+    }]
   })),
   
-  deleteProject: (id) => set((state) => ({
-    projects: state.projects.filter(p => p.id !== id)
-  })),
+  deleteMaquina: (id) => set((state) => ({
+    maquinas: state.maquinas.filter(m => m.id !== id)
+  }))
 }));
+
+//Pivotando para o Sistema de Manutenção de Máquinas, onde cada máquina tem um nome, descrição e data de manutenção. O código acima define a estrutura do estado para armazenar as máquinas e as funções para adicionar e deletar máquinas.
