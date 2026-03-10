@@ -40,6 +40,18 @@ export const useMaintenanceStore = create(
           ...novaOS 
         }]
       })),
+
+      adicionarOS: (maquinaId, novaOS) => set((state) => ({
+        maquinas: state.maquinas.map((maquina) => {
+          if (maquina.id === maquinaId) {
+            return{
+              ...maquina,
+              historico: [...(maquina.historico || []), novaOS]
+            };
+          }
+          return maquina;
+        })
+      }))
     }),
     {
       name: 'industrial-storage', 

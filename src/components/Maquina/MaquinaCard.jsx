@@ -1,7 +1,8 @@
 // src/components/Maquina/MaquinaCard.jsx
+import { Link } from 'react-router-dom';
 import { STATUS_COLORS, STATUS_MAQUINA } from "../../constants/statusColors";
 
-function MaquinaCard({ maquina, onClick }) {
+function MaquinaCard({ maquina }) {
 
   return (
     <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
@@ -21,11 +22,12 @@ function MaquinaCard({ maquina, onClick }) {
             </p>
         </div>
 
-        <button 
-        className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-md text-sm font-medium transition-colors"
-        onClick={onClick}>
-            {maquina.status === "PARADA" ? "⚠️ ABRIR OS DE EMERGÊNCIA" : "Ver Detalhes / OS"}
-        </button>
+        <Link 
+          to={`/maquinas/${maquina.id}`} 
+          className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-md text-sm font-medium transition-colors text-center block"
+        >
+          {maquina.status === "PARADA" ? "⚠️ ABRIR OS DE EMERGÊNCIA" : "Ver Detalhes / OS"}
+        </Link>                                                                             
         
         <p className="text-[10px] text-gray-400 mt-2 text-center uppercase tracking-wider">
             Última intervenção: 12/05/2026

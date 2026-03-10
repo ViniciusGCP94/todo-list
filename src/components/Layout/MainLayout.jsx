@@ -1,5 +1,4 @@
 import { Link, Outlet } from 'react-router-dom'
-import Dashboard from '../../pages/Dashboard';
 
 const MainLayout = () => {
   return (
