@@ -67,11 +67,29 @@ function MaquinaDetalhe() {
             </button>
           </div>
           
-          <div className="space-y-2">
+          <div className="space-y-3">
             {maquina.historico?.map(os => (
-              <div key={os.id} className="p-3 bg-slate-900/50 border border-slate-700 rounded-lg flex justify-between">
-                <span>{os.tipo} - {os.mecanico}</span>
-                <span className="text-slate-500">{os.dataAbertura}</span>
+              <div key={os.id} className="p-4 bg-slate-900/50 border border-slate-700 rounded-lg">
+                <div className="flex justify-between items-start mb-2">
+                  <span className="font-semibold text-slate-200">
+                    {os.tipo} - {os.mecanico}
+                  </span>
+                  <span className="text-sm text-slate-500">{os.dataAbertura}</span>
+                </div>
+
+                <p className="text-sm text-slate-300 mt-2 mb-3">
+                  {os.descricao}
+                </p>
+
+                <span className={`
+                  inline-block text-xs font-semibold px-2 py-1 rounded
+                  ${os.criticidade === 'Crítica' ? 'bg-red-500/60 text-red-500' : ''}
+                  ${os.criticidade === 'Alta' ? 'bg-orange-500/60 text-orange-500' : ''}
+                  ${os.criticidade === 'Média' ? 'bg-yellow-300/80 text-yellow-300' : ''}
+                  ${os.criticidade === 'Baixa' ? 'bg-green-500/60 text-green-500' : ''}
+                `}>
+                  {os.criticidade.toUpperCase()}
+                </span>
               </div>
             )) || <p className="text-slate-500 text-sm">Nenhuma OS registrada.</p>}
           </div>
